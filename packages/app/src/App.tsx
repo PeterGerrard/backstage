@@ -28,6 +28,7 @@ import { Root } from './components/Root';
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp, FlatRoutes } from '@backstage/core-app-api';
 import { EntitySnykContent } from 'backstage-plugin-snyk';
+import { AzurePipelinesPage } from '@internal/plugin-azure-pipelines';
 
 const app = createApp({
   apis,
@@ -77,6 +78,7 @@ const routes = (
       {searchPage}
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
+    <Route path="/azure-pipelines" element={<AzurePipelinesPage />}/>
   </FlatRoutes>
 );
 
