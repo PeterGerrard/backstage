@@ -51,7 +51,11 @@ techdocs:
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers: {}
+  providers:
+    github:
+      development:
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
 
 scaffolder:
   github:
@@ -99,3 +103,22 @@ catalog:
       target: https://github.com/backstage/software-templates/blob/main/scaffolder-templates/docs-template/template.yaml
       rules:
         - allow: [Template]
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://rgdns-5a5024b4.hcp.uksouth.azmk8s.io:443
+          name: production
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          serviceAccountToken: ${K8S_PRODUCTION_TOKEN}
+    - type: 'config'
+      clusters:
+        - url: https://rgdns-afd60c6a.hcp.uksouth.azmk8s.io:443
+          name: staging
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          serviceAccountToken: ${K8S_STAGING_TOKEN}
