@@ -55,6 +55,7 @@ import {
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EmptyState } from '@backstage/core-components';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import { SnykOverview, EntitySnykContent } from 'backstage-plugin-snyk';
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -115,6 +116,9 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <Grid item>
+      <SnykOverview />
+    </Grid>
   </Grid>
 );
 
@@ -156,6 +160,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/snyk" title="Security">
+      <EntitySnykContent />
     </EntityLayout.Route>
   </EntityLayout>
 );

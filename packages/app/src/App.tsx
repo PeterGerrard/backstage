@@ -27,6 +27,7 @@ import { Root } from './components/Root';
 
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp, FlatRoutes } from '@backstage/core-app-api';
+import { EntitySnykContent } from 'backstage-plugin-snyk';
 
 const app = createApp({
   apis,
@@ -60,6 +61,7 @@ const routes = (
     <Route path="/docs" element={<TechDocsIndexPage />}>
       <DefaultTechDocsHome />
     </Route>
+    <Route path="/snyk" element={<EntitySnykContent />}/>
     <Route
       path="/docs/:namespace/:kind/:name/*"
       element={<TechDocsReaderPage />}
